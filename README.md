@@ -6,7 +6,7 @@ Initially conjured up for [anything.js](https://github.com/Rabrennie/anything.js
 
 ## How does it work?
 
-It's stupid simple. Creating a new instance of BRICK creates a new `<div>` element (the __root element__ or __context__) and appends it to the document body. Every new entity or sprite created through the BRICK instance is added to the root element.
+It's stupid simple. Creating a new instance of BRICK creates a new `<div>` element (the _root_ or _context_) and appends it to the document body. Every new entity or sprite created through the BRICK instance is added to the root element.
 
 Entities and sprites have accessors and modifiers defined for positions, sizes, and other things that directly affect their CSS styles. That's what does most of the magic.
 
