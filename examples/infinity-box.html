@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../brick.js"></script>
+    <script>
+        var ctx = new BRICK();
+        var box = ctx.entity(
+            window.innerWidth / 2 - 64,
+            window.innerHeight / 2 - 64,
+            128,
+            128,
+            'red'
+        );
+        var req;
+        function update(t) {
+            box.x += 5 * Math.cos(t / 500);
+            box.y += 5 * Math.cos(2 * t / 500) / 2;
+            req = window.requestAnimationFrame(update);
+        }
+        update(0);
+        window.addEventListener('keyup', function(e) {
+            if (e.keyCode == 27) {
+                window.cancelAnimationFrame(req);
+                while (ctx.root.domElement.firstChild) {
+                    ctx.root.domElement.removeChild(ctx.root.domElement.firstChild);
+                }
+            }
+        }, false);
+    </script>
+</body>
+</html>
