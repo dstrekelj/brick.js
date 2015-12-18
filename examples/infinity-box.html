@@ -7,7 +7,14 @@
 <body>
     <script src="../brick.js"></script>
     <script>
+        /**
+         * This creates a red box at the centre of the screen
+         * that moves along the path of an infinity symbol.
+         */
+        
+        // Create new context
         var ctx = new BRICK();
+        // Create box
         var box = ctx.entity(
             window.innerWidth / 2 - 64,
             window.innerHeight / 2 - 64,
@@ -15,13 +22,22 @@
             128,
             'red'
         );
+        
+        /**
+         * We need a reference to requestAnimationFrame if we
+         * want to cancel the animation on key press.
+         */
         var req;
+        
+        // This will update and move our box along the desired path
         function update(t) {
             box.x += 5 * Math.cos(t / 500);
             box.y += 5 * Math.cos(2 * t / 500) / 2;
             req = window.requestAnimationFrame(update);
         }
         update(0);
+        
+        // This will remove the root / context when ESC is pressed
         window.addEventListener('keyup', function(e) {
             if (e.keyCode == 27) {
                 window.cancelAnimationFrame(req);
